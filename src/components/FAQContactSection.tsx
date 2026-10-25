@@ -56,54 +56,54 @@ export default function FAQContactSection() {
   };
 
   return (
-    <section id="faq-contact" className="relative py-24 sm:py-32 bg-[#09090d] text-white border-t border-[#1a1a24]">
+    <section id="faq-contact" className="relative py-14 sm:py-20 bg-[#09090d] text-white border-t border-[#1a1a24]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="font-mono text-xs uppercase tracking-widest text-[#c6f939] font-bold">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+          <span className="font-mono text-[11px] uppercase tracking-widest text-[#c6f939] font-bold">
             SUPPORT & INQUIRIES
           </span>
-          <h2 className="text-4xl sm:text-6xl font-black uppercase tracking-tight text-white font-display mt-3">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-white font-display mt-2">
             FREQUENTLY ASKED <span className="text-[#c6f939]">&amp;</span> CONTACT
           </h2>
-          <p className="mt-4 text-zinc-400 font-mono text-xs sm:text-sm">
+          <p className="mt-2 text-zinc-400 font-mono text-xs max-w-md mx-auto">
             Everything you need to know about our athletic protocols, or reach out to our team directly.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           {/* FAQs Column (7 Cols) */}
-          <div className="lg:col-span-7 space-y-4">
-            <div className="flex items-center gap-2 mb-6">
-              <HelpCircle className="w-5 h-5 text-[#c6f939]" />
-              <h3 className="font-display font-black text-xl uppercase tracking-wider text-white">
+          <div className="lg:col-span-7 space-y-3">
+            <div className="flex items-center gap-2 mb-4">
+              <HelpCircle className="w-4 h-4 text-[#c6f939]" />
+              <h3 className="font-display font-black text-lg uppercase tracking-wider text-white">
                 Frequently Asked Questions
               </h3>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-2.5">
               {faqs.map((faq, idx) => {
                 const isOpen = openFaq === idx;
                 return (
                   <div
                     key={idx}
-                    className="border border-[#1f1f2e] bg-[#0e0e15] rounded-2xl overflow-hidden transition-all duration-200"
+                    className="border border-[#1f1f2e] bg-[#0e0e15] rounded-xl overflow-hidden transition-all duration-200"
                   >
                     <button
                       onClick={() => toggleFaq(idx)}
-                      className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-white/[0.02]"
+                      className="w-full p-4 sm:p-4.5 text-left flex items-center justify-between gap-3 cursor-pointer hover:bg-white/[0.02]"
                     >
-                      <span className="font-display font-bold text-sm sm:text-base uppercase tracking-wide text-white">
+                      <span className="font-display font-bold text-xs sm:text-sm uppercase tracking-wide text-white">
                         {faq.question}
                       </span>
                       <ChevronDown
-                        className={`w-5 h-5 text-[#c6f939] transition-transform duration-300 flex-shrink-0 ${
+                        className={`w-4 h-4 text-[#c6f939] transition-transform duration-300 flex-shrink-0 ${
                           isOpen ? "rotate-180" : ""
                         }`}
                       />
                     </button>
                     {isOpen && (
-                      <div className="px-5 sm:px-6 pb-6 text-xs sm:text-sm text-zinc-400 font-mono leading-relaxed border-t border-[#181824] pt-4">
+                      <div className="px-4 sm:px-4.5 pb-4 text-xs text-zinc-400 font-mono leading-relaxed border-t border-[#181824] pt-3">
                         {faq.answer}
                       </div>
                     )}
@@ -114,31 +114,31 @@ export default function FAQContactSection() {
           </div>
 
           {/* Contact Column (5 Cols) */}
-          <div className="lg:col-span-5 bg-[#0e0e15] border border-[#222233] rounded-3xl p-6 sm:p-8 shadow-2xl">
-            <div className="flex items-center gap-2 mb-4">
-              <MessageSquare className="w-5 h-5 text-[#c6f939]" />
-              <h3 className="font-display font-black text-xl uppercase tracking-wider text-white">
+          <div className="lg:col-span-5 bg-[#0e0e15] border border-[#222233] rounded-2xl p-5 sm:p-6 shadow-xl">
+            <div className="flex items-center gap-2 mb-3">
+              <MessageSquare className="w-4 h-4 text-[#c6f939]" />
+              <h3 className="font-display font-black text-lg uppercase tracking-wider text-white">
                 Get In Touch
               </h3>
             </div>
-            <p className="text-zinc-400 font-mono text-xs mb-6">
+            <p className="text-zinc-400 font-mono text-[11px] mb-5">
               Speak directly with Coach Marco to structure your transformation block.
             </p>
 
             {submitted ? (
-              <div className="p-6 rounded-2xl bg-[#c6f939]/10 border border-[#c6f939]/30 text-center flex flex-col items-center">
-                <CheckCircle2 className="w-12 h-12 text-[#c6f939] mb-3" />
-                <h4 className="font-display font-black text-lg uppercase text-white">
+              <div className="p-5 rounded-xl bg-[#c6f939]/10 border border-[#c6f939]/30 text-center flex flex-col items-center">
+                <CheckCircle2 className="w-10 h-10 text-[#c6f939] mb-2" />
+                <h4 className="font-display font-black text-base uppercase text-white">
                   Message Dispatched
                 </h4>
-                <p className="text-xs font-mono text-zinc-300 mt-2">
+                <p className="text-xs font-mono text-zinc-300 mt-1.5">
                   Coach Marco will personally review your inquiry and reach back within 2 hours.
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-3">
                 <div>
-                  <label className="block text-[11px] font-mono text-zinc-400 uppercase tracking-wider mb-1.5 font-bold">
+                  <label className="block text-[10px] font-mono text-zinc-400 uppercase tracking-wider mb-1 font-bold">
                     Full Name
                   </label>
                   <input
@@ -147,12 +147,12 @@ export default function FAQContactSection() {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="Alex Hunter"
-                    className="w-full px-4 py-3 rounded-xl bg-[#14141f] border border-[#26263a] text-white font-mono text-xs placeholder:text-zinc-600 focus:outline-none focus:border-[#c6f939] transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-[#14141f] border border-[#26263a] text-white font-mono text-xs placeholder:text-zinc-600 focus:outline-none focus:border-[#c6f939] transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-mono text-zinc-400 uppercase tracking-wider mb-1.5 font-bold">
+                  <label className="block text-[10px] font-mono text-zinc-400 uppercase tracking-wider mb-1 font-bold">
                     Email Address
                   </label>
                   <input
@@ -161,18 +161,18 @@ export default function FAQContactSection() {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="alex@athlete.com"
-                    className="w-full px-4 py-3 rounded-xl bg-[#14141f] border border-[#26263a] text-white font-mono text-xs placeholder:text-zinc-600 focus:outline-none focus:border-[#c6f939] transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-[#14141f] border border-[#26263a] text-white font-mono text-xs placeholder:text-zinc-600 focus:outline-none focus:border-[#c6f939] transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-mono text-zinc-400 uppercase tracking-wider mb-1.5 font-bold">
+                  <label className="block text-[10px] font-mono text-zinc-400 uppercase tracking-wider mb-1 font-bold">
                     Primary Athletic Objective
                   </label>
                   <select
                     value={formData.goal}
                     onChange={(e) => setFormData({ ...formData, goal: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-[#14141f] border border-[#26263a] text-white font-mono text-xs focus:outline-none focus:border-[#c6f939] transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-[#14141f] border border-[#26263a] text-white font-mono text-xs focus:outline-none focus:border-[#c6f939] transition-colors"
                   >
                     <option value="Hypertrophy & Conditioning">Hypertrophy &amp; Conditioning</option>
                     <option value="Raw Strength & Powerlifting">Raw Strength &amp; Powerlifting</option>
@@ -182,40 +182,40 @@ export default function FAQContactSection() {
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-mono text-zinc-400 uppercase tracking-wider mb-1.5 font-bold">
+                  <label className="block text-[10px] font-mono text-zinc-400 uppercase tracking-wider mb-1 font-bold">
                     Message / Current Training Baseline
                   </label>
                   <textarea
-                    rows={3}
+                    rows={2}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Tell us about your current training routine and target timeline..."
-                    className="w-full px-4 py-3 rounded-xl bg-[#14141f] border border-[#26263a] text-white font-mono text-xs placeholder:text-zinc-600 focus:outline-none focus:border-[#c6f939] transition-colors resize-none"
+                    placeholder="Tell us about your current training routine..."
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-[#14141f] border border-[#26263a] text-white font-mono text-xs placeholder:text-zinc-600 focus:outline-none focus:border-[#c6f939] transition-colors resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-3.5 rounded-xl bg-[#c6f939] hover:bg-[#b0e628] text-black font-display font-black text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-transform active:scale-95 cursor-pointer shadow-lg shadow-[#c6f939]/20"
+                  className="w-full py-3 rounded-lg bg-[#c6f939] hover:bg-[#b0e628] text-black font-display font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-transform active:scale-95 cursor-pointer shadow-md"
                 >
-                  <Send className="w-4 h-4" />
+                  <Send className="w-3.5 h-3.5" />
                   <span>Send Direct Inquiry</span>
                 </button>
               </form>
             )}
 
             {/* Direct details */}
-            <div className="mt-8 pt-6 border-t border-[#1e1e2d] space-y-2.5 text-xs font-mono text-zinc-400">
-              <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#c6f939]" />
+            <div className="mt-6 pt-4 border-t border-[#1e1e2d] space-y-2 text-[11px] font-mono text-zinc-400">
+              <div className="flex items-center gap-2">
+                <Mail className="w-3.5 h-3.5 text-[#c6f939]" />
                 <span>coaching@kinetic-apex.com</span>
               </div>
-              <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-[#c6f939]" />
+              <div className="flex items-center gap-2">
+                <Phone className="w-3.5 h-3.5 text-[#c6f939]" />
                 <span>+1 (800) 867-8391 // DIRECT</span>
               </div>
-              <div className="flex items-center gap-2.5">
-                <MapPin className="w-4 h-4 text-[#c6f939]" />
+              <div className="flex items-center gap-2">
+                <MapPin className="w-3.5 h-3.5 text-[#c6f939]" />
                 <span>420 Foundry Blvd, Sector 4, Downtown</span>
               </div>
             </div>

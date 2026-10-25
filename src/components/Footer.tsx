@@ -74,27 +74,27 @@ export default function Footer() {
   return (
     <footer 
       ref={footerRef}
-      className="bg-[#050507] border-t border-[#171722] pt-16 pb-12 text-zinc-400 font-mono text-xs overflow-hidden select-none"
+      className="bg-[#050507] border-t border-[#171722] pt-10 pb-8 text-zinc-400 font-mono text-xs overflow-hidden select-none"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={columnsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-[#151520]">
+        <div ref={columnsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 pb-8 border-b border-[#151520]">
           {/* Brand Column (Spans 2 cols) */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#c6f939] to-[#8fc819] flex items-center justify-center shadow-[0_0_20px_rgba(198,249,57,0.4)]">
-                <Dumbbell className="w-4 h-4 text-black transform -rotate-45" />
+            <div className="flex items-center gap-2.5 mb-3">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#c6f939] to-[#8fc819] flex items-center justify-center shadow-[0_0_15px_rgba(198,249,57,0.4)]">
+                <Dumbbell className="w-3.5 h-3.5 text-black transform -rotate-45" />
               </div>
               <div className="flex flex-col">
-                <span className="font-extrabold text-lg tracking-wider text-white font-display">
+                <span className="font-extrabold text-base tracking-wider text-white font-display">
                   COACH <span className="text-[#c6f939]">//</span> MARCO
                 </span>
-                <span className="text-[8px] tracking-widest text-zinc-400 -mt-1 uppercase">
+                <span className="text-[8px] tracking-widest text-zinc-400 -mt-0.5 uppercase">
                   ELITE ATHLETIC COACHING
                 </span>
               </div>
             </div>
 
-            <p className="text-zinc-400 text-xs leading-relaxed max-w-sm mb-6 font-sans">
+            <p className="text-zinc-400 text-[11px] leading-relaxed max-w-sm mb-4 font-sans">
               An uncompromising coaching platform engineered by Coach Marco for competitive lifters,
               athletes, and dedicated transformations. 1-on-1 programming and biomechanical precision.
             </p>

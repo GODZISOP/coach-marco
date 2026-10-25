@@ -165,39 +165,39 @@ export default function PricingSection({ onOpenBooking }: PricingProps) {
     <section 
       ref={sectionRef}
       id="pricing" 
-      className="py-24 sm:py-32 relative bg-[#08080a] border-t border-[#1a1a24] overflow-hidden select-none perspective-[1200px]"
+      className="py-14 sm:py-20 relative bg-[#08080a] border-t border-[#1a1a24] overflow-hidden select-none perspective-[1200px]"
     >
       {/* Background radial glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-[radial-gradient(circle,rgba(198,249,57,0.15)_0%,transparent_70%)] blur-[150px] pointer-events-none opacity-50"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[radial-gradient(circle,rgba(198,249,57,0.12)_0%,transparent_70%)] blur-[120px] pointer-events-none opacity-50"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header with Masked Slide-Up Reveals */}
-        <div ref={headerRef} className="text-center max-w-3xl mx-auto mb-16">
-          <div className="overflow-hidden inline-block mb-3">
-            <div className="pricing-mask-line inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#15151e] border border-[#c6f939]/40 text-xs font-mono text-[#c6f939] uppercase tracking-wider">
+        <div ref={headerRef} className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+          <div className="overflow-hidden inline-block mb-2">
+            <div className="pricing-mask-line inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#15151e] border border-[#c6f939]/40 text-xs font-mono text-[#c6f939] uppercase tracking-wider">
               <Zap className="w-3.5 h-3.5 fill-current" />
               <span>TRANSPARENT ATHLETIC TIERS</span>
             </div>
           </div>
 
-          <div className="overflow-hidden py-1">
-            <h2 className="pricing-mask-line text-4xl sm:text-6xl font-black text-white uppercase font-display tracking-tight leading-[1.0]">
+          <div className="overflow-hidden py-0.5">
+            <h2 className="pricing-mask-line text-2xl sm:text-4xl md:text-5xl font-black text-white uppercase font-display tracking-tight leading-[1.05]">
               INVEST IN YOUR <span className="text-[#c6f939]">ENGINE</span>
             </h2>
           </div>
 
-          <div className="overflow-hidden py-1">
-            <p className="pricing-mask-line text-zinc-400 text-sm max-w-xl mx-auto mt-2 font-sans">
+          <div className="overflow-hidden py-0.5">
+            <p className="pricing-mask-line text-zinc-400 text-xs sm:text-sm max-w-lg mx-auto mt-1.5 font-sans">
               No long-term predatory lock-ins. Capped member roster to guarantee zero rack wait times.
             </p>
           </div>
 
           {/* Billing Cycle Toggle */}
-          <div className="pricing-toggle-wrap mt-8 inline-flex items-center p-1.5 rounded-full bg-[#12121a] border border-[#232332] shadow-lg">
+          <div className="pricing-toggle-wrap mt-5 inline-flex items-center p-1 rounded-full bg-[#12121a] border border-[#232332] shadow-lg">
             <button
               onClick={() => setBillingCycle("monthly")}
-              className={`px-5 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer ${
+              className={`px-4 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer ${
                 billingCycle === "monthly"
                   ? "bg-[#1f1f2c] text-white shadow-md"
                   : "text-zinc-400 hover:text-white"
@@ -207,14 +207,14 @@ export default function PricingSection({ onOpenBooking }: PricingProps) {
             </button>
             <button
               onClick={() => setBillingCycle("annual")}
-              className={`px-5 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-all flex items-center gap-2 cursor-pointer ${
+              className={`px-4 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-all flex items-center gap-2 cursor-pointer ${
                 billingCycle === "annual"
                   ? "bg-[#c6f939] text-black font-black shadow-[0_0_15px_rgba(198,249,57,0.4)]"
                   : "text-zinc-400 hover:text-white"
               }`}
             >
               <span>ANNUAL PASS</span>
-              <span className="px-2 py-0.5 rounded-full bg-black text-[#c6f939] text-[9px] font-black">
+              <span className="px-1.5 py-0.5 rounded-full bg-black text-[#c6f939] text-[9px] font-black">
                 SAVE 20%
               </span>
             </button>
@@ -222,56 +222,56 @@ export default function PricingSection({ onOpenBooking }: PricingProps) {
         </div>
 
         {/* Pricing Cards Grid with 3D Stagger & Hover */}
-        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 items-stretch">
           {plans.map((plan) => {
             const price = billingCycle === "annual" ? plan.priceAnnual : plan.priceMonthly;
             return (
               <motion.div
                 key={plan.name}
                 whileHover={{
-                  scale: 1.035,
-                  y: -8,
+                  scale: 1.025,
+                  y: -5,
                   transition: { type: "spring", stiffness: 400, damping: 20 }
                 }}
-                className={`rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-shadow duration-300 relative ${
+                className={`rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition-shadow duration-300 relative ${
                   plan.popular
-                    ? "bg-gradient-to-b from-[#161622] to-[#0d0d14] border-2 border-[#c6f939] shadow-[0_0_40px_rgba(198,249,57,0.25)] lg:-translate-y-3"
+                    ? "bg-gradient-to-b from-[#161622] to-[#0d0d14] border-2 border-[#c6f939] shadow-[0_0_30px_rgba(198,249,57,0.2)] lg:-translate-y-2"
                     : "bg-[#0d0d13] border border-[#1e1e2c] hover:border-[#c6f939]/40 shadow-xl"
                 }`}
               >
                 {plan.popular && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-[#c6f939] to-[#9ad116] text-black font-mono text-[10px] font-black uppercase tracking-widest shadow-lg flex items-center gap-1.5">
-                    <Flame className="w-3.5 h-3.5 fill-black" /> MOST POPULAR PROTOCOL
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-gradient-to-r from-[#c6f939] to-[#9ad116] text-black font-mono text-[9px] font-black uppercase tracking-widest shadow-md flex items-center gap-1">
+                    <Flame className="w-3 h-3 fill-black" /> MOST POPULAR PROTOCOL
                   </div>
                 )}
 
                 <div>
-                  <div className="mb-4">
-                    <h3 className="text-xl sm:text-2xl font-black text-white font-display uppercase tracking-tight">
+                  <div className="mb-3">
+                    <h3 className="text-lg sm:text-xl font-black text-white font-display uppercase tracking-tight">
                       {plan.name}
                     </h3>
-                    <p className="text-zinc-400 text-xs mt-1 leading-relaxed font-sans">
+                    <p className="text-zinc-400 text-xs mt-0.5 leading-relaxed font-sans">
                       {plan.tagline}
                     </p>
                   </div>
 
                   {/* Price Tag */}
-                  <div className="flex items-baseline gap-1 my-6 font-display">
-                    <span className="text-4xl sm:text-5xl font-black text-white">${price}</span>
-                    <span className="text-xs text-zinc-400 font-mono">/ MONTH</span>
+                  <div className="flex items-baseline gap-1 my-3 sm:my-4 font-display">
+                    <span className="text-3xl sm:text-4xl font-black text-white">${price}</span>
+                    <span className="text-[11px] text-zinc-400 font-mono">/ MONTH</span>
                     {billingCycle === "annual" && (
-                      <span className="text-[10px] font-mono text-emerald-400 ml-2">BILLED ANNUALLY</span>
+                      <span className="text-[9px] font-mono text-emerald-400 ml-1.5">BILLED ANNUALLY</span>
                     )}
                   </div>
 
-                  <div className="h-[1px] bg-[#1e1e2a] w-full mb-6"></div>
+                  <div className="h-[1px] bg-[#1e1e2a] w-full mb-4"></div>
 
                   {/* Feature List */}
-                  <div className="space-y-3 mb-8">
+                  <div className="space-y-2 mb-5">
                     {plan.features.map((feat, idx) => (
-                      <div key={idx} className="flex items-start gap-2.5 text-xs text-zinc-300 font-sans">
-                        <Check className="w-4 h-4 text-[#c6f939] shrink-0 mt-0.5" />
-                        <span>{feat}</span>
+                      <div key={idx} className="flex items-start gap-2 text-xs text-zinc-300 font-sans">
+                        <Check className="w-3.5 h-3.5 text-[#c6f939] shrink-0 mt-0.5" />
+                        <span className="leading-tight">{feat}</span>
                       </div>
                     ))}
                   </div>
@@ -279,14 +279,14 @@ export default function PricingSection({ onOpenBooking }: PricingProps) {
 
                 <button
                   onClick={onOpenBooking}
-                  className={`w-full py-4 rounded-xl font-mono text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                  className={`w-full py-3 rounded-lg font-mono text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer ${
                     plan.popular
-                      ? "bg-[#c6f939] hover:bg-[#b2e52b] text-black shadow-[0_0_25px_rgba(198,249,57,0.4)] hover:scale-[1.02]"
+                      ? "bg-[#c6f939] hover:bg-[#b2e52b] text-black shadow-[0_0_20px_rgba(198,249,57,0.35)] hover:scale-[1.02]"
                       : "bg-[#15151e] hover:bg-[#c6f939] text-zinc-200 hover:text-black border border-[#262638] hover:border-[#c6f939]"
                   }`}
                 >
                   <span>{plan.cta}</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </motion.div>
             );
@@ -296,13 +296,13 @@ export default function PricingSection({ onOpenBooking }: PricingProps) {
         {/* Member Guarantee */}
         <div 
           ref={guaranteeRef}
-          className="mt-14 p-6 rounded-2xl bg-[#0e0e14] border border-[#1f1f2c] flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-400 font-mono gap-4 shadow-xl"
+          className="mt-8 p-4 rounded-xl bg-[#0e0e14] border border-[#1f1f2c] flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-400 font-mono gap-3 shadow-lg"
         >
-          <div className="flex items-center gap-3">
-            <Shield className="w-5 h-5 text-[#c6f939]" />
-            <span>30-DAY UNCONDITIONAL STRENGTH PR GUARANTEE OR 100% REFUND</span>
+          <div className="flex items-center gap-2.5">
+            <Shield className="w-4 h-4 text-[#c6f939]" />
+            <span className="text-[11px]">30-DAY UNCONDITIONAL STRENGTH PR GUARANTEE OR 100% REFUND</span>
           </div>
-          <span className="text-zinc-500 font-bold">CAPPED AT 350 TOTAL ACTIVE MEMBERS</span>
+          <span className="text-zinc-500 font-bold text-[11px]">CAPPED AT 350 TOTAL ACTIVE MEMBERS</span>
         </div>
       </div>
     </section>
