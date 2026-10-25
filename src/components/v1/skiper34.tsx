@@ -1,92 +1,57 @@
 "use client";
 
-import {
-  motion,
-  useMotionValue,
-  useScroll,
-  useTransform,
-} from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
-export const StickyCard_003 = ({ imgUrl }: { imgUrl: string }) => {
-  const vertMargin = 12;
-  const container = useRef<HTMLDivElement>(null);
-  const [stickPoint, setStickPoint] = useState<number | null>(null);
+interface StickyCardProps {
+  imgUrl: string;
+  index: number;
+}
 
-  // Initial values: card is 100% visible and unrotated from the very start
-  const scale = useMotionValue(1);
-  const filter = useMotionValue(0);
-  const negateFilter = useTransform(filter, (value) => -value);
+export const StickyCard_003 = ({ imgUrl, index }: StickyCardProps) => {
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const { scrollY } = useScroll();
+  // Measure scroll through this specific card's section
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
 
-  useEffect(() => {
-    const updateStickPoint = () => {
-      if (container.current) {
-        const rect = container.current.getBoundingClientRect();
-        const currentScroll = window.scrollY || window.pageYOffset;
-        const targetTop = (window.innerHeight * vertMargin) / 100;
-        setStickPoint(currentScroll + rect.top - targetTop);
-      }
-    };
+  // Scale down card as user scrolls past it (1 -> 0.8)
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
 
-    updateStickPoint();
-    window.addEventListener("resize", updateStickPoint);
-    window.addEventListener("load", updateStickPoint);
+  // Alternate rotation direction (+14deg / -14deg) for realistic dynamic card deck
+  const rotateAngle = index % 2 === 0 ? 14 : -14;
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, rotateAngle]);
 
-    const t1 = setTimeout(updateStickPoint, 400);
-    const t2 = setTimeout(updateStickPoint, 1200);
-
-    return () => {
-      window.removeEventListener("resize", updateStickPoint);
-      window.removeEventListener("load", updateStickPoint);
-      clearTimeout(t1);
-      clearTimeout(t2);
-    };
-  }, [vertMargin]);
-
-  useEffect(() => {
-    return scrollY.on("change", (latestScrollY) => {
-      if (!container.current) return;
-      const rect = container.current.getBoundingClientRect();
-      const targetTop = (window.innerHeight * vertMargin) / 100;
-
-      // Before sticking: stay upright and fully sized
-      if (rect.top > targetTop + 2) {
-        scale.set(1);
-        filter.set(0);
-      } else {
-        // While stuck and scrolling past: animate 1-by-1
-        const currentStick = stickPoint ?? (latestScrollY + rect.top - targetTop);
-        const scrollDistance = 650;
-        const progress = Math.min(1, Math.max(0, (latestScrollY - currentStick) / scrollDistance));
-        const animationValue = 1 - progress;
-        scale.set(Math.max(0.12, animationValue));
-        filter.set((1 - animationValue) * 55);
-      }
-    });
-  }, [scrollY, stickPoint, scale, filter, vertMargin]);
+  // Counter-rotate the inner image so the athlete stays upright while card spins
+  const counterRotate = useTransform(rotate, (val) => -val);
 
   return (
-    <motion.div
-      ref={container}
-      className="rounded-[24px] sm:rounded-[32px] sticky w-full max-w-[340px] xs:max-w-[380px] sm:max-w-[480px] md:max-w-[540px] aspect-[4/5] max-h-[68vh] sm:max-h-[72vh] overflow-hidden bg-[#0d0d12] border border-white/20 shadow-[0_25px_70px_rgba(0,0,0,0.95)] flex items-center justify-center p-2.5 sm:p-3.5"
-      style={{
-        scale: scale,
-        rotate: filter,
-        top: `${vertMargin}vh`,
-      }}
+    <div
+      ref={containerRef}
+      className="relative w-full h-[75vh] sm:h-[85vh] flex justify-center"
+      style={{ zIndex: index + 10 }}
     >
-      <motion.img
-        src={imgUrl}
-        alt="Transformation Athlete"
+      <motion.div
         style={{
-          rotate: negateFilter,
+          scale,
+          rotate,
+          top: "14vh",
         }}
-        loading="eager"
-        className="h-full w-full object-cover object-center select-none rounded-[18px] sm:rounded-[26px]"
-      />
-    </motion.div>
+        className="sticky w-full max-w-[340px] xs:max-w-[380px] sm:max-w-[460px] md:max-w-[520px] aspect-[4/5] max-h-[65vh] sm:max-h-[70vh] overflow-hidden rounded-[24px] sm:rounded-[32px] bg-[#0d0d14] border border-white/20 shadow-[0_25px_80px_rgba(0,0,0,0.95)] flex items-center justify-center p-2.5 sm:p-3.5"
+      >
+        <motion.img
+          src={imgUrl}
+          alt="Transformation Athlete"
+          style={{
+            rotate: counterRotate,
+          }}
+          loading="eager"
+          className="h-full w-full object-cover object-center select-none rounded-[18px] sm:rounded-[26px]"
+        />
+      </motion.div>
+    </div>
   );
 };
 

@@ -12,9 +12,9 @@ const images = [
 
 export default function AthleteScrollReveal() {
   return (
-    <section id="gallery" className="relative flex w-full flex-col items-center gap-[15vh] px-4 pt-20 pb-[20vh] bg-[#070709]">
+    <section id="gallery" className="relative flex w-full flex-col items-center px-4 pt-16 pb-[20vh] bg-[#070709]">
       {/* Header with skiper34 scroll indicator */}
-      <div className="relative flex flex-col items-center gap-4 text-center mb-8">
+      <div className="relative flex flex-col items-center gap-4 text-center mb-12 sm:mb-16">
         <span className="font-mono text-xs uppercase tracking-widest text-[#c6f939] font-bold">
           COACH MARCO ATHLETES // ARCHIVE
         </span>
@@ -27,9 +27,11 @@ export default function AthleteScrollReveal() {
       </div>
 
       {/* Sticky Card Stack */}
-      {images.map((img, idx) => (
-        <StickyCard_003 key={idx} imgUrl={img} />
-      ))}
+      <div className="w-full flex flex-col items-center">
+        {images.map((img, idx) => (
+          <StickyCard_003 key={idx} imgUrl={img} index={idx} />
+        ))}
+      </div>
     </section>
   );
 }
