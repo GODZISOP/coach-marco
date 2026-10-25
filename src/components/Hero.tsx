@@ -28,7 +28,7 @@ export default function Hero({ onOpenBooking }: HeroProps) {
             y: "0%", 
             opacity: 1, 
             duration: 1.2, 
-            stagger: 0.18, 
+            stagger: 0.16, 
             ease: "power4.out",
             delay: 0.1 
           }
@@ -40,7 +40,7 @@ export default function Hero({ onOpenBooking }: HeroProps) {
           "-=0.6"
         );
 
-      // 2. Webflow-Style Scroll Scrubbed Parallax as user scrolls down
+      // 2. Smooth vertical scroll parallax (locked horizontal alignment so text NEVER drifts)
       gsap.to(".hero-left-col", {
         scrollTrigger: {
           trigger: containerRef.current,
@@ -48,9 +48,8 @@ export default function Hero({ onOpenBooking }: HeroProps) {
           end: "bottom top",
           scrub: 1,
         },
-        y: 90,
-        x: -50,
-        opacity: 0.25,
+        y: 60,
+        opacity: 0.35,
         ease: "none",
       });
 
@@ -61,9 +60,8 @@ export default function Hero({ onOpenBooking }: HeroProps) {
           end: "bottom top",
           scrub: 1,
         },
-        y: 90,
-        x: 50,
-        opacity: 0.25,
+        y: 60,
+        opacity: 0.35,
         ease: "none",
       });
 
@@ -74,8 +72,8 @@ export default function Hero({ onOpenBooking }: HeroProps) {
           end: "bottom top",
           scrub: 1,
         },
-        scale: 1.15,
-        y: 60,
+        scale: 1.12,
+        y: 40,
         ease: "none",
       });
     }, containerRef);
@@ -86,64 +84,70 @@ export default function Hero({ onOpenBooking }: HeroProps) {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen w-full bg-[#ccff00] text-black overflow-hidden flex flex-col justify-end pt-24 pb-8 sm:pb-12 px-4 sm:px-8 lg:px-12 select-none"
-      style={{ backgroundColor: "#ccff00" }}
+      className="relative min-h-[100dvh] w-full bg-[#c6f939] text-black overflow-hidden flex flex-col justify-end pt-20 sm:pt-24 pb-8 sm:pb-12 px-4 sm:px-8 lg:px-12 select-none"
+      style={{ backgroundColor: "#c6f939" }}
     >
       {/* Subtle industrial dot overlay */}
       <div 
-        className="absolute inset-0 pointer-events-none opacity-25 mix-blend-overlay"
+        className="absolute inset-0 pointer-events-none opacity-20 mix-blend-overlay"
         style={{
           backgroundImage: "radial-gradient(rgba(0,0,0,0.4) 1px, transparent 1px)",
           backgroundSize: "20px 20px"
         }}
       />
 
-      {/* Center Athlete Photo Background (Instant 47KB WebP, eager loading) */}
+      {/* Athlete Photo Background (Shifted to 80% on mobile so text on left is 100% unobstructed) */}
       <div 
         ref={athleteRef}
-        className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 overflow-hidden"
+        className="absolute inset-0 flex items-end sm:items-center justify-end sm:justify-center pointer-events-none z-10 overflow-hidden"
       >
-        <div className="relative w-full h-full max-w-[1600px] flex items-center justify-center">
+        <div className="relative w-full h-full max-w-[1600px] flex items-end sm:items-center justify-end sm:justify-center">
           <img
             src="/hero-bg.webp"
-            alt="Apex Athletic Coach Background"
+            alt="Coach Marco Athletic Background"
             loading="eager"
             decoding="sync"
-            className="w-full h-full object-cover object-center scale-100 select-none pointer-events-none"
+            className="w-full h-full object-cover object-[80%_center] sm:object-center select-none pointer-events-none"
           />
         </div>
       </div>
 
-      {/* BOTTOM ROW: SIGNATURE CONDENSED BRUTALIST TYPOGRAPHY */}
-      <div className="relative z-20 w-full mt-auto pt-12 sm:pt-16 pb-2">
+      {/* BOTTOM ROW: PERFECTLY ALIGNED CONDENSED BRUTALIST TYPOGRAPHY */}
+      <div className="relative z-20 w-full mt-auto pt-16 sm:pt-20 pb-2">
         <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-5 sm:gap-6">
           
-          {/* Left Block: "YOUR BODY." / "YOUR RESULTS." with overflow-hidden mask reveals */}
+          {/* Left Block: All 3 lines aligned consistently on mobile & tablet */}
           <div className="hero-left-col flex flex-col">
             <div className="overflow-hidden py-0.5">
-              <h1 className="hero-mask-line block font-display font-black tracking-tighter uppercase text-black leading-[0.85] text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-[7.5vw] xl:text-[8.5vw] drop-shadow-sm">
+              <h1 className="hero-mask-line block font-display font-black tracking-tighter uppercase text-black leading-[0.86] text-[10.5vw] xs:text-5xl sm:text-7xl md:text-8xl lg:text-[7.5vw] xl:text-[8.5vw] drop-shadow-sm">
                 YOUR BODY.
               </h1>
             </div>
             <div className="overflow-hidden py-0.5">
-              <h1 className="hero-mask-line block font-display font-black tracking-tighter uppercase text-black leading-[0.85] text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-[7.5vw] xl:text-[8.5vw] drop-shadow-sm">
+              <h1 className="hero-mask-line block font-display font-black tracking-tighter uppercase text-black leading-[0.86] text-[10.5vw] xs:text-5xl sm:text-7xl md:text-8xl lg:text-[7.5vw] xl:text-[8.5vw] drop-shadow-sm">
                 YOUR RESULTS.
+              </h1>
+            </div>
+            {/* Third line grouped together on mobile */}
+            <div className="overflow-hidden py-0.5 lg:hidden">
+              <h1 className="hero-mask-line block font-display font-black tracking-tighter uppercase text-black leading-[0.86] text-[10.5vw] xs:text-5xl sm:text-7xl md:text-8xl lg:text-[7.5vw] xl:text-[8.5vw] drop-shadow-sm">
+                YOUR PATH.
               </h1>
             </div>
           </div>
 
-          {/* Right Block: "YOUR PATH." + Quick CTAs with overflow-hidden mask reveals */}
+          {/* Right Block: "YOUR PATH." on Desktop + High-Contrast CTAs */}
           <div className="hero-right-col flex flex-col items-start lg:items-end w-full lg:w-auto">
-            <div className="overflow-hidden py-0.5">
-              <h1 className="hero-mask-line block font-display font-black tracking-tighter uppercase text-black leading-[0.85] text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-[7.5vw] xl:text-[8.5vw] drop-shadow-sm text-left lg:text-right">
+            <div className="overflow-hidden py-0.5 hidden lg:block">
+              <h1 className="hero-mask-line block font-display font-black tracking-tighter uppercase text-black leading-[0.86] text-5xl sm:text-7xl md:text-8xl lg:text-[7.5vw] xl:text-[8.5vw] drop-shadow-sm text-right">
                 YOUR PATH.
               </h1>
             </div>
 
-            <div className="hero-cta-wrap mt-3 sm:mt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
+            <div className="hero-cta-wrap mt-4 sm:mt-5 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
               <button
                 onClick={onOpenBooking}
-                className="w-full sm:w-auto px-5 sm:px-6 py-3.5 rounded-xl bg-black hover:bg-zinc-900 text-[#c6f939] font-mono text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-xl hover:scale-105 active:scale-95 cursor-pointer text-center"
+                className="w-full sm:w-auto px-6 py-4 rounded-xl bg-black hover:bg-zinc-900 text-[#c6f939] font-mono text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2.5 transition-all shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:scale-105 active:scale-95 cursor-pointer text-center"
               >
                 <Flame className="w-4 h-4 fill-current shrink-0" />
                 <span>TRAIN WITH COACH MARCO</span>
@@ -152,7 +156,7 @@ export default function Hero({ onOpenBooking }: HeroProps) {
 
               <a
                 href="#profile-section"
-                className="w-full sm:w-auto px-5 py-3.5 rounded-xl bg-black/10 hover:bg-black/20 border border-black/25 text-black font-mono text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all text-center"
+                className="w-full sm:w-auto px-6 py-4 rounded-xl bg-white hover:bg-zinc-100 text-black font-mono text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 border-2 border-black transition-all shadow-md text-center cursor-pointer"
               >
                 <Zap className="w-4 h-4 shrink-0" />
                 <span>EXPLORE METHOD ↓</span>

@@ -88,7 +88,7 @@ export default function KineticProfileSection({ onOpenBooking }: KineticProfileP
     <section
       ref={sectionRef}
       id="profile-section"
-      className="relative w-full min-h-[85vh] lg:min-h-[92vh] bg-[#c6f939] text-black overflow-hidden flex flex-col justify-between pt-8 sm:pt-12 pb-0 px-6 sm:px-10 lg:px-16 select-none border-b-2 border-black"
+      className="relative w-full min-h-[85vh] lg:min-h-[92vh] bg-[#c6f939] text-black overflow-hidden flex flex-col justify-between pt-6 sm:pt-12 pb-0 px-4 sm:px-10 lg:px-16 select-none border-b-2 border-black"
       style={{ backgroundColor: "#c6f939" }}
     >
       {/* Background Image: kinetic-bg.webp (Instant load, high-res 145KB, zero delay) */}
@@ -131,13 +131,13 @@ export default function KineticProfileSection({ onOpenBooking }: KineticProfileP
 
       {/* CONTENT GRID: Left Editorial Content & Right Bauhaus Art Frame */}
       {/* High z-index (z-20) so all text and UI sit ABOVE the background image */}
-      <div className="relative z-20 w-full flex-1 flex flex-col lg:flex-row items-stretch justify-between gap-8 mt-6 sm:mt-10 pb-8 sm:pb-12 pointer-events-none">
+      <div className="relative z-20 w-full flex-1 flex flex-col lg:flex-row items-stretch justify-between gap-6 sm:gap-8 mt-4 sm:mt-10 pb-6 sm:pb-12 pointer-events-none">
         {/* LEFT COLUMN: Editorial Headline & Person Details */}
         <div className="flex flex-col justify-between max-w-xl z-30 pointer-events-auto">
           <div>
             <h2
               ref={headlineRef}
-              className="font-sans font-black tracking-tight text-black text-4xl sm:text-6xl md:text-7xl lg:text-[4.3vw] leading-[0.98] uppercase drop-shadow-sm flex flex-col"
+              className="font-sans font-black tracking-tight text-black text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-[4.3vw] leading-[1.0] uppercase drop-shadow-sm flex flex-col"
             >
               <div className="overflow-hidden py-0.5">
                 <span className="anim-headline-line block">Embrace</span>
@@ -155,7 +155,7 @@ export default function KineticProfileSection({ onOpenBooking }: KineticProfileP
           </div>
 
           {/* Left Metadata & Athlete Tag */}
-          <div className="mt-8 sm:mt-16 lg:mt-auto flex flex-col gap-6">
+          <div className="mt-4 sm:mt-12 lg:mt-auto flex flex-col gap-4 sm:gap-6">
             <div className="overflow-hidden">
               <span className="anim-metadata block font-mono text-xs sm:text-sm font-bold tracking-wider text-black/80">
                 ® -2024
@@ -180,11 +180,11 @@ export default function KineticProfileSection({ onOpenBooking }: KineticProfileP
         {/* RIGHT COLUMN: Bauhaus Geometric Modular Grid & Interactive Controls */}
         <div
           ref={gridRef}
-          className="flex flex-col items-start lg:items-end justify-between ml-auto z-30 pointer-events-auto"
+          className="flex flex-col items-end justify-between mt-auto pt-6 sm:pt-16 lg:pt-0 ml-auto z-30 pointer-events-auto"
         >
           {/* Bauhaus Geometric 2x2 Grid with high contrast black and #c6f939 tiles */}
-          <div className="w-full max-w-[260px] sm:max-w-[300px] lg:max-w-[340px]">
-            <div className="grid grid-cols-2 grid-rows-2 w-full aspect-square border-2 border-black bg-black shadow-xl">
+          <div className="w-full max-w-[150px] xs:max-w-[180px] sm:max-w-[260px] lg:max-w-[340px]">
+            <div className="grid grid-cols-2 grid-rows-2 w-full aspect-square border-2 border-black bg-black shadow-2xl">
               {/* Tile 1: Top-Left - #c6f939 bg with Black Diagonal Triangle */}
               <div className="relative w-full h-full bg-[#c6f939] overflow-hidden">
                 <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -194,7 +194,7 @@ export default function KineticProfileSection({ onOpenBooking }: KineticProfileP
 
               {/* Tile 2: Top-Right - Solid Black with subtle concentric ring */}
               <div className="relative w-full h-full bg-black flex items-center justify-center">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-[#c6f939]/30" />
+                <div className="w-12 h-12 sm:w-20 sm:h-20 rounded-full border border-[#c6f939]/30" />
               </div>
 
               {/* Tile 3: Bottom-Left - Black bg with #c6f939 Diagonal Triangle */}
@@ -213,8 +213,8 @@ export default function KineticProfileSection({ onOpenBooking }: KineticProfileP
             </div>
 
             {/* "do your best/" label & Interactive Expand Button */}
-            <div className="mt-5 flex items-center justify-between gap-4">
-              <span className="font-sans font-black text-base sm:text-lg tracking-tight text-black">
+            <div className="mt-3 sm:mt-5 flex items-center justify-between gap-2 sm:gap-4">
+              <span className="font-sans font-black text-xs sm:text-lg tracking-tight text-black">
                 do your best/
               </span>
 
@@ -222,10 +222,10 @@ export default function KineticProfileSection({ onOpenBooking }: KineticProfileP
               <button
                 onClick={() => setIsStatsOpen(true)}
                 title="View Athlete Dossier"
-                className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-black/15 hover:bg-black/30 backdrop-blur-md border border-black/25 flex items-center justify-center transition-all group active:scale-90 cursor-pointer shadow-md"
+                className="w-10 h-10 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-black hover:bg-zinc-900 text-[#c6f939] flex items-center justify-center transition-all group active:scale-90 cursor-pointer shadow-xl border-2 border-black"
               >
                 <svg
-                  className="w-7 h-7 sm:w-8 sm:h-8 text-black group-hover:scale-110 transition-transform"
+                  className="w-5 h-5 sm:w-8 sm:h-8 text-[#c6f939] group-hover:scale-110 transition-transform"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -243,14 +243,14 @@ export default function KineticProfileSection({ onOpenBooking }: KineticProfileP
           </div>
 
           {/* Bottom Right Circular Action Button */}
-          <div className="mt-6 ml-auto flex items-center gap-3">
+          <div className="mt-3 sm:mt-6 ml-auto flex items-center gap-3">
             <button
               onClick={handleRotate}
               title="Kinetic Rhythm Pulse"
-              className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-black/15 hover:bg-black/30 backdrop-blur-md border border-black/25 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-md"
+              className="w-10 h-10 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-black hover:bg-zinc-900 text-[#c6f939] flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-xl border-2 border-black"
             >
               <RotateCw
-                className={`w-6 h-6 sm:w-7 sm:h-7 text-black transition-transform duration-700 ${isRotating ? "rotate-180" : ""
+                className={`w-4 h-4 sm:w-7 sm:h-7 text-[#c6f939] transition-transform duration-700 ${isRotating ? "rotate-180" : ""
                   }`}
               />
             </button>
@@ -260,8 +260,8 @@ export default function KineticProfileSection({ onOpenBooking }: KineticProfileP
 
       {/* INTERACTIVE DOSSIER MODAL (When clicking the Expand Arrow) */}
       {isStatsOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md animate-fadeIn">
-          <div className="relative w-full max-w-xl bg-[#0c0c10] border border-[#2b2b3a] rounded-3xl p-6 sm:p-8 text-white shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
+          <div className="relative w-full max-w-xl max-h-[90vh] overflow-y-auto bg-[#0c0c10] border border-[#2b2b3a] rounded-2xl sm:rounded-3xl p-5 sm:p-8 text-white shadow-2xl">
             {/* Header */}
             <div className="flex items-center justify-between border-b border-[#222230] pb-4">
               <div className="flex items-center gap-3">
