@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth">
       <body
-        className={`${inter.variable} ${montserrat.variable} bg-[#070709] text-[#f2f2f5] font-sans antialiased selection:bg-[#c6f939] selection:text-black min-h-screen overflow-x-hidden`}
+        className={`${inter.variable} ${montserrat.variable} bg-[#070709] text-[#f2f2f5] font-sans antialiased selection:bg-[#c6f939] selection:text-black min-h-screen overflow-x-clip`}
       >
         {children}
       </body>
