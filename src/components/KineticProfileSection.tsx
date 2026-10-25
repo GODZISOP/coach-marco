@@ -182,8 +182,8 @@ export default function KineticProfileSection({ onOpenBooking }: KineticProfileP
           ref={gridRef}
           className="flex flex-col items-end justify-between mt-auto pt-6 sm:pt-16 lg:pt-0 ml-auto z-30 pointer-events-auto"
         >
-          {/* Bauhaus Geometric 2x2 Grid with high contrast black and #c6f939 tiles */}
-          <div className="w-full max-w-[150px] xs:max-w-[180px] sm:max-w-[260px] lg:max-w-[340px]">
+          {/* Bauhaus Geometric 2x2 Grid with high contrast black and #c6f939 tiles (Hidden on mobile) */}
+          <div className="hidden sm:block w-full max-w-[150px] xs:max-w-[180px] sm:max-w-[260px] lg:max-w-[340px]">
             <div className="grid grid-cols-2 grid-rows-2 w-full aspect-square border-2 border-black bg-black shadow-2xl">
               {/* Tile 1: Top-Left - #c6f939 bg with Black Diagonal Triangle */}
               <div className="relative w-full h-full bg-[#c6f939] overflow-hidden">
@@ -242,8 +242,30 @@ export default function KineticProfileSection({ onOpenBooking }: KineticProfileP
             </div>
           </div>
 
-          {/* Bottom Right Circular Action Button */}
-          <div className="mt-3 sm:mt-6 ml-auto flex items-center gap-3">
+          {/* Action Buttons: Expand on Mobile + Kinetic Rotate */}
+          <div className="mt-auto sm:mt-6 ml-auto flex items-center gap-2.5 sm:gap-3">
+            {/* Mobile-only Dossier access button */}
+            <button
+              onClick={() => setIsStatsOpen(true)}
+              title="View Athlete Dossier"
+              className="sm:hidden w-10 h-10 rounded-xl bg-black hover:bg-zinc-900 text-[#c6f939] flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-xl border-2 border-black"
+            >
+              <svg
+                className="w-5 h-5 text-[#c6f939]"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <polyline points="15 3 21 3 21 9" />
+                <polyline points="9 21 3 21 3 15" />
+                <line x1="21" y1="3" x2="14" y2="10" />
+                <line x1="3" y1="21" x2="10" y2="14" />
+              </svg>
+            </button>
+
             <button
               onClick={handleRotate}
               title="Kinetic Rhythm Pulse"
