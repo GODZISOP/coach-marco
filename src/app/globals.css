@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+}
+
+:root {
+  --background: #08080a;
+  --foreground: #f4f4f6;
+  --card-bg: #0f0f14;
+  --card-border: #1f1f2a;
+  --accent: #c6f939;
+  --accent-glow: rgba(198, 249, 57, 0.4);
+  --accent-muted: rgba(198, 249, 57, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #08080a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #23232c;
+  border-radius: 9999px;
+  border: 1px solid rgba(198, 249, 57, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c6f939;
+}
+
+/* Background Grids & Dots */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.bg-accent-radial {
+  background: radial-gradient(circle at 50% 20%, rgba(198, 249, 57, 0.18) 0%, rgba(8, 8, 10, 0) 65%);
+}
+
+.bg-accent-glow-spot {
+  background: radial-gradient(circle, rgba(198, 249, 57, 0.25) 0%, rgba(0,0,0,0) 70%);
+}
+
+/* Accent Glow Effect */
+.glow-accent {
+  box-shadow: 0 0 25px rgba(198, 249, 57, 0.35);
+}
+
+.glow-accent-sm {
+  box-shadow: 0 0 12px rgba(198, 249, 57, 0.3);
+}
+
+.glow-text {
+  text-shadow: 0 0 20px rgba(198, 249, 57, 0.6);
+}
+
+/* Animated Border Beam */
+@keyframes border-beam {
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+/* Marquee Animations */
+@keyframes marquee-left {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 28s linear infinite;
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marquee-right 32s linear infinite;
+}
+
+.animate-marquee-left:hover,
+.animate-marquee-right:hover {
+  animation-play-state: paused;
+}
+
+/* Noise overlay */
+.noise-overlay {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 0);
+  background-size: 24px 24px;
+}
