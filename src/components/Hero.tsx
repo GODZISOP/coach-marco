@@ -115,46 +115,46 @@ export default function Hero({ onOpenBooking }: HeroProps) {
       </div>
 
       {/* BOTTOM ROW: SIGNATURE CONDENSED BRUTALIST TYPOGRAPHY */}
-      <div className="relative z-20 w-full mt-auto pt-16 pb-2">
-        <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-6">
+      <div className="relative z-20 w-full mt-auto pt-12 sm:pt-16 pb-2">
+        <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-5 sm:gap-6">
           
           {/* Left Block: "YOUR BODY." / "YOUR RESULTS." with overflow-hidden mask reveals */}
           <div className="hero-left-col flex flex-col">
-            <div className="overflow-hidden py-1">
-              <h1 className="hero-mask-line block font-display font-black tracking-tighter uppercase text-black leading-[0.84] text-5xl sm:text-7xl md:text-8xl lg:text-[7.5vw] xl:text-[8.5vw] drop-shadow-sm">
+            <div className="overflow-hidden py-0.5">
+              <h1 className="hero-mask-line block font-display font-black tracking-tighter uppercase text-black leading-[0.85] text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-[7.5vw] xl:text-[8.5vw] drop-shadow-sm">
                 YOUR BODY.
               </h1>
             </div>
-            <div className="overflow-hidden py-1">
-              <h1 className="hero-mask-line block font-display font-black tracking-tighter uppercase text-black leading-[0.84] text-5xl sm:text-7xl md:text-8xl lg:text-[7.5vw] xl:text-[8.5vw] drop-shadow-sm">
+            <div className="overflow-hidden py-0.5">
+              <h1 className="hero-mask-line block font-display font-black tracking-tighter uppercase text-black leading-[0.85] text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-[7.5vw] xl:text-[8.5vw] drop-shadow-sm">
                 YOUR RESULTS.
               </h1>
             </div>
           </div>
 
           {/* Right Block: "YOUR PATH." + Quick CTAs with overflow-hidden mask reveals */}
-          <div className="hero-right-col flex flex-col items-start lg:items-end">
-            <div className="overflow-hidden py-1">
-              <h1 className="hero-mask-line block font-display font-black tracking-tighter uppercase text-black leading-[0.84] text-5xl sm:text-7xl md:text-8xl lg:text-[7.5vw] xl:text-[8.5vw] drop-shadow-sm text-left lg:text-right">
+          <div className="hero-right-col flex flex-col items-start lg:items-end w-full lg:w-auto">
+            <div className="overflow-hidden py-0.5">
+              <h1 className="hero-mask-line block font-display font-black tracking-tighter uppercase text-black leading-[0.85] text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-[7.5vw] xl:text-[8.5vw] drop-shadow-sm text-left lg:text-right">
                 YOUR PATH.
               </h1>
             </div>
 
-            <div className="hero-cta-wrap mt-4 flex flex-wrap items-center gap-3">
+            <div className="hero-cta-wrap mt-3 sm:mt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
               <button
                 onClick={onOpenBooking}
-                className="px-6 py-3.5 rounded-xl bg-black hover:bg-zinc-900 text-[#c6f939] font-mono text-xs font-black uppercase tracking-wider flex items-center gap-2.5 transition-all shadow-xl hover:scale-105 active:scale-95 cursor-pointer"
+                className="w-full sm:w-auto px-5 sm:px-6 py-3.5 rounded-xl bg-black hover:bg-zinc-900 text-[#c6f939] font-mono text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-xl hover:scale-105 active:scale-95 cursor-pointer text-center"
               >
-                <Flame className="w-4 h-4 fill-current" />
+                <Flame className="w-4 h-4 fill-current shrink-0" />
                 <span>TRAIN WITH COACH MARCO</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 shrink-0" />
               </button>
 
               <a
                 href="#profile-section"
-                className="px-5 py-3.5 rounded-xl bg-black/10 hover:bg-black/20 border border-black/25 text-black font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-2 transition-all"
+                className="w-full sm:w-auto px-5 py-3.5 rounded-xl bg-black/10 hover:bg-black/20 border border-black/25 text-black font-mono text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all text-center"
               >
-                <Zap className="w-4 h-4" />
+                <Zap className="w-4 h-4 shrink-0" />
                 <span>EXPLORE METHOD ↓</span>
               </a>
             </div>
