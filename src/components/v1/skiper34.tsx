@@ -6,49 +6,51 @@ import { useRef } from "react";
 interface StickyCardProps {
   imgUrl: string;
   index: number;
+  total: number;
 }
 
-export const StickyCard_003 = ({ imgUrl, index }: StickyCardProps) => {
+export const StickyCard_003 = ({ imgUrl, index, total }: StickyCardProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Measure scroll through this specific card's section
+  // Measure scroll through this specific card's track
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
   });
 
-  // Scale down card as user scrolls past it (1 -> 0.8)
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
+  // As the user scrolls past this card, it scales down from 1.0 to 0.90 so the top/sides peek behind the next card
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.90]);
 
-  // Alternate rotation direction (+14deg / -14deg) for realistic dynamic card deck
-  const rotateAngle = index % 2 === 0 ? 14 : -14;
+  // Subtle natural deck tilt (+2.5deg / -2.5deg) exactly like the demo
+  const rotateAngle = index % 2 === 0 ? 2.5 : -2.5;
   const rotate = useTransform(scrollYProgress, [0, 1], [0, rotateAngle]);
 
-  // Counter-rotate the inner image so the athlete stays upright while card spins
+  // Counter-rotate the inner image so the athlete stays upright while card frame subtly rotates
   const counterRotate = useTransform(rotate, (val) => -val);
 
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[75vh] sm:h-[85vh] flex justify-center"
+      className="relative w-full h-[85vh] sm:h-[95vh] flex justify-center"
       style={{ zIndex: index + 10 }}
     >
       <motion.div
         style={{
           scale,
           rotate,
-          top: "14vh",
+          top: "12vh",
         }}
-        className="sticky w-full max-w-[340px] xs:max-w-[380px] sm:max-w-[460px] md:max-w-[520px] aspect-[4/5] max-h-[65vh] sm:max-h-[70vh] overflow-hidden rounded-[24px] sm:rounded-[32px] bg-[#0d0d14] border border-white/20 shadow-[0_25px_80px_rgba(0,0,0,0.95)] flex items-center justify-center p-2.5 sm:p-3.5"
+        className="sticky w-full max-w-[340px] xs:max-w-[400px] sm:max-w-[480px] md:max-w-[540px] lg:max-w-[620px] aspect-[4/5] max-h-[72vh] sm:max-h-[76vh] overflow-hidden rounded-[26px] sm:rounded-[36px] bg-[#0c0c12] border border-white/20 shadow-[0_25px_80px_rgba(0,0,0,0.95)] flex items-center justify-center p-2 sm:p-2.5"
       >
         <motion.img
           src={imgUrl}
-          alt="Transformation Athlete"
+          alt={`Coach Marco Transformation ${index + 1}`}
           style={{
             rotate: counterRotate,
           }}
           loading="eager"
-          className="h-full w-full object-cover object-center select-none rounded-[18px] sm:rounded-[26px]"
+          decoding="sync"
+          className="w-full h-full object-cover object-center select-none rounded-[20px] sm:rounded-[30px]"
         />
       </motion.div>
     </div>
